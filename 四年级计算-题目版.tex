@@ -1,0 +1,42 @@
+% !TeX program = xelatex
+\documentclass[12pt,a4paper]{article}
+\usepackage[left=17mm,right=17mm,top=17mm,bottom=13mm]{geometry}
+\usepackage{fontspec}
+\usepackage{unicode-math}
+
+\setmainfont{Latin Modern Roman}
+\setmathfont{Latin Modern Math}
+\newfontfamily\cjkfont{Noto Serif CJK SC}
+\newcommand{\zh}[1]{{\cjkfont #1}}
+\newcommand{\marked}{\zh{※}\,}
+\setlength{\parindent}{0pt}
+\pagestyle{empty}
+
+\newcommand{\instruction}[1]{\par\noindent{\bfseries\zh{#1}}\par\vspace{2.5mm}}
+\newcommand{\cell}[3]{\begin{minipage}[t][#2][t]{#1}\strut #3\end{minipage}}
+\newcommand{\verticalrow}[3]{%
+  \noindent\cell{.33\textwidth}{42mm}{#1}%
+  \cell{.33\textwidth}{42mm}{#2}%
+  \cell{.34\textwidth}{42mm}{#3}\par
+}
+\newcommand{\twocolrow}[2]{%
+  \noindent\cell{.53\textwidth}{46mm}{#1}%
+  \cell{.47\textwidth}{46mm}{#2}\par
+}
+
+\begin{document}
+\noindent\makebox[\textwidth]{{\Large\bfseries\zh{四年级计算}}}\par
+\vspace{6mm}
+
+\instruction{竖式计算，带※验算}
+\verticalrow{$584\times17={}$}{\marked $496\div32={}$}{\marked $333\times27={}$}
+\verticalrow{$406\times19={}$}{\marked $1047\div35={}$}{$817\times36={}$}
+\vspace{1.5mm}
+
+\instruction{脱式计算，能简算的要简算}
+\noindent\cell{.25\textwidth}{46mm}{$99\times99+99$}%
+\cell{.39\textwidth}{46mm}{$25\times(19+19+19+19)$}%
+\cell{.36\textwidth}{46mm}{$840\div7\times(36-11)$}\par
+\twocolrow{$502\times[1020\div(960-940)]$}{$816\div[(19-11)\times6]$}
+\twocolrow{$99+999+9999+99999$}{$738-301$}
+\end{document}
